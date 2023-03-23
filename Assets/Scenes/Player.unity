@@ -1364,16 +1364,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2683944982563116797, guid: 4bb65c0b965e8e94bbf667f76631055b,
         type: 3}
-      propertyPath: amorr
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2683944982563116797, guid: 4bb65c0b965e8e94bbf667f76631055b,
-        type: 3}
-      propertyPath: health
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2683944982563116797, guid: 4bb65c0b965e8e94bbf667f76631055b,
-        type: 3}
       propertyPath: Amorrbar
       value: 
       objectReference: {fileID: 906106377}

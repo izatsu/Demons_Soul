@@ -27,24 +27,27 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
-
-        time_dontHurt += Time.deltaTime;
-        Debug.Log("Time: " + time_dontHurt);
-        if (time_dontHurt >= 5)
+        if(!isDie)
         {
-            if (amorr < 5)
+            time_dontHurt += Time.deltaTime;
+            //Debug.Log("Time: " + time_dontHurt);
+            if (time_dontHurt >= 5)
             {
-                time_amorr += Time.deltaTime;
-                if (time_amorr >= 1)
+                if (amorr < 5)
                 {
-                    amorr++;
-                    Amorrbar.SetHealth(amorr);
-                    time_amorr = 0;
+                    time_amorr += Time.deltaTime;
+                    if (time_amorr >= 1)
+                    {
+                        amorr++;
+                        Amorrbar.SetHealth(amorr);
+                        time_amorr = 0;
+                    }
+
                 }
 
             }
-
         }
+        
     }
 
 
