@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &401358067
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 401358068}
+  m_Layer: 20
+  m_Name: 'Pos_gun1 '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &401358068
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401358067}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.48, y: 0.51, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2683944982776101574}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &715315312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 715315313}
+  m_Layer: 20
+  m_Name: Pos_gun2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &715315313
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715315312}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.51, y: -0.49, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2683944982776101574}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2683944982563116743
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,7 +239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae5276a7f8281bc45add97fda923d93f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pos_attack: {fileID: 2683944982776101574}
+  pos_attack1: {fileID: 401358068}
+  pos_attack2: {fileID: 715315313}
   bullet_prefabs: {fileID: 6925199319621072119, guid: 5ddecb5b6659a464090aacdc00afcaa4,
     type: 3}
 --- !u!114 &2683944982563116799
@@ -322,9 +385,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6c262f7684b7b34ab09d56540dd91be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
-  amorr: 1
+  health: 6
+  amorr: 5
   isDie: 0
+  healthbar: {fileID: 0}
+  Amorrbar: {fileID: 0}
 --- !u!1 &2683944982776101575
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,7 +418,9 @@ Transform:
   m_LocalPosition: {x: -0.9, y: 0.36, z: 0}
   m_LocalScale: {x: 0.2847, y: 0.2847, z: 0.2847}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 401358068}
+  - {fileID: 715315313}
   m_Father: {fileID: 2683944982563116793}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
