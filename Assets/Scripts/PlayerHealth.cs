@@ -12,12 +12,16 @@ public class PlayerHealth : MonoBehaviour
     private float time_dontHurt = 0;
     private float time_amorr = 0;
 
-
     Animator ani;
+
+    [SerializeField] HealthBar healthbar;
+    [SerializeField] HealthBar Amorrbar;
 
     private void Start()
     {
         ani = GetComponent<Animator>();
+        healthbar.SetMaxHealth(health);
+        Amorrbar.SetMaxHealth(amorr);
     }
 
 
@@ -34,6 +38,7 @@ public class PlayerHealth : MonoBehaviour
                 if (time_amorr >= 1)
                 {
                     amorr++;
+                    Amorrbar.SetHealth(amorr);
                     time_amorr = 0;
                 }
 
@@ -52,12 +57,14 @@ public class PlayerHealth : MonoBehaviour
             if (amorr > 0)
             {
                 amorr--;
+                Amorrbar.SetHealth(amorr);
                 return;
             }
                 
             if (amorr <= 0)
             {
                 health--;
+                healthbar.SetHealth(health);
                 if(health <= 0)
                 {
                     isDie = true;
