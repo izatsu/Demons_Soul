@@ -14,16 +14,12 @@ public class PlayerHealth : MonoBehaviour
 
     Animator ani;
 
-    HealthBar healthbar;
-    HealthBar Amorrbar;
+    [SerializeField] HealthBar healthbar;
+    [SerializeField] HealthBar Amorrbar;
 
     private void Start()
     {
         ani = GetComponent<Animator>();
-
-        healthbar = GameObject.Find("Health Bar").GetComponent<HealthBar>();
-        Amorrbar = GameObject.Find("Amorr Bar").GetComponent<HealthBar>();
-
         healthbar.SetMaxHealth(health);
         Amorrbar.SetMaxHealth(amorr);
     }
