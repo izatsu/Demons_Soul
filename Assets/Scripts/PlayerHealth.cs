@@ -20,7 +20,6 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         ani = GetComponent<Animator>();
-
         healthbar = GameObject.Find("Health Bar").GetComponent<HealthBar>();
         Amorrbar = GameObject.Find("Amorr Bar").GetComponent<HealthBar>();
 

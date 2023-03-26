@@ -5,7 +5,6 @@ using UnityEngine;
 public class BulletPlayer : MonoBehaviour
 {
     private Vector2 direction = Vector2.up;
-
     [SerializeField] float speed;
 
     private Vector2 pos_start;
@@ -19,6 +18,7 @@ public class BulletPlayer : MonoBehaviour
     PlayerMove pl_move;
 
     SpriteRenderer sp_bullet;
+
 
     void Start()
     {

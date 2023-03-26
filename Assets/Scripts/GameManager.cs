@@ -16,14 +16,12 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        player = Instantiate(Player_prefabs, pos_player.position, Quaternion.Euler(0,0,0)); 
-        
+        player = Instantiate(Player_prefabs, pos_player.position, Quaternion.Euler(0, 0, 0));
+
     }
 
     private void Start()
     {
-        healthbar = Instantiate(CanvasHealthBar_Prefabs);        
+        healthbar = Instantiate(CanvasHealthBar_Prefabs);
     }
-
-
 }
