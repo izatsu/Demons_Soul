@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
+    //move
+    private Joystick joystick;
     private Rigidbody2D rb;
     public Vector2 direction;
     [SerializeField] private float speed = 3;
@@ -11,6 +14,7 @@ public class PlayerMove : MonoBehaviour
     Animator ani;
 
     //dash
+    Button dash_button;
     private bool canDash = true;
     private bool isDashing;
     [SerializeField] float DashingPower = 10f;
@@ -23,24 +27,33 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        joystick = FindObjectOfType<FixedJoystick>().GetComponent<FixedJoystick>();
         ani = GetComponent<Animator>();
         pl_h = GetComponent<PlayerHealth>();
+
+        dash_button = GameObject.Find("DashButton").GetComponent<Button>();
+        dash_button.onClick.AddListener(DashButton);
+
     }
 
     void Update()
     {
-        direction.x = Input.GetAxisRaw("Horizontal");
-        direction.y = Input.GetAxisRaw("Vertical");
+        /*direction.x = Input.GetAxisRaw("Horizontal");
+        direction.y = Input.GetAxisRaw("Vertical");*/
+
+        direction.x = joystick.Direction.x;
+        direction.y = joystick.Direction.y;
+
 
 
         ani.SetFloat("Horizontal", direction.x);
         ani.SetFloat("Vertical", direction.y);
         ani.SetFloat("Speed", direction.sqrMagnitude);
 
-        if (Input.GetKey(KeyCode.LeftShift) && canDash && !pl_h.isDie)
+        /*if (Input.GetKey(KeyCode.LeftShift) && canDash && !pl_h.isDie)
         {
             StartCoroutine(Dash());
-        }
+        }*/
 
         if (pl_h.isDie)
             rb.velocity = Vector2.zero;
@@ -55,6 +68,15 @@ public class PlayerMove : MonoBehaviour
         if(!pl_h.isDie)
             rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
     }
+
+    public void DashButton()
+    {
+        if (canDash && !pl_h.isDie)
+        {
+            StartCoroutine(Dash());
+        }
+    } 
+        
 
     private IEnumerator Dash()
     {

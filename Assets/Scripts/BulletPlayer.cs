@@ -30,7 +30,7 @@ public class BulletPlayer : MonoBehaviour
 
         pos_start = transform.position;
 
-        if (Vector2.Distance(pos_start, find.direction_attack.position) < 5f)
+        if (find.direction_attack != null && (Vector2.Distance(pos_start, find.direction_attack.position) < 5f))
             pos_enemy = find.direction_attack;
         else
             pos_enemy = null;

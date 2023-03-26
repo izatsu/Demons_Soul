@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -12,9 +13,13 @@ public class PlayerAttack : MonoBehaviour
 
     PlayerHealth pl_h;
 
+    Button attack_button;
+
     private void Start()
     {
         pl_h = GetComponent<PlayerHealth>();
+        attack_button = GameObject.Find("AttackButton").GetComponent<Button>();
+        attack_button.onClick.AddListener(Attack);
     }
 
     private void Update()
@@ -30,7 +35,7 @@ public class PlayerAttack : MonoBehaviour
             Attack();
     }
 
-    public void Attack()
+    private void Attack()
     {
         if (canAttack && !pl_h.isDie)
         {
