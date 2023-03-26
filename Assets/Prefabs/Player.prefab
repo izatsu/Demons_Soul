@@ -227,6 +227,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0}
   speed: 3
+  DashingPower: 10
+
 --- !u!114 &2683944982563116792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,6 +375,7 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+
 --- !u!114 &2683944982563116797
 MonoBehaviour:
   m_ObjectHideFlags: 0

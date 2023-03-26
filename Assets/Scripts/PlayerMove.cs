@@ -11,7 +11,6 @@ public class PlayerMove : MonoBehaviour
     Animator ani;
 
     //dash
-    private TrailRenderer tr;
     private bool canDash = true;
     private bool isDashing;
     private float DashingPower = 20f;
@@ -25,7 +24,6 @@ public class PlayerMove : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         ani = GetComponent<Animator>();
-        tr = GetComponent<TrailRenderer>();
         pl_h = GetComponent<PlayerHealth>();
     }
 
@@ -65,9 +63,7 @@ public class PlayerMove : MonoBehaviour
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(direction.x * DashingPower, direction.y * DashingPower);
-        tr.emitting = true;
         yield return new WaitForSeconds(dashingTime);
-        tr.emitting = false;
         rb.gravityScale = originalGravity;
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);

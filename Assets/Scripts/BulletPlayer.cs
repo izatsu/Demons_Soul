@@ -18,6 +18,7 @@ public class BulletPlayer : MonoBehaviour
     PlayerMove pl_move;
 
 
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();

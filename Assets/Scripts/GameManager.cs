@@ -5,8 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public void PlayWorldMap()
+    private void Awake()
     {
-        SceneManager.LoadScene("WorldMap");
+        player = Instantiate(Player_prefabs, pos_player.position, Quaternion.Euler(0, 0, 0));
+
     }
+
+    private void Start()
+    {
+        healthbar = Instantiate(CanvasHealthBar_Prefabs);
+    }
+
 }
