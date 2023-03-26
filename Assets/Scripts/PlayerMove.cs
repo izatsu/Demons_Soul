@@ -13,7 +13,7 @@ public class PlayerMove : MonoBehaviour
     //dash
     private bool canDash = true;
     private bool isDashing;
-    private float DashingPower = 20f;
+    [SerializeField] float DashingPower = 10f;
     private float dashingTime = 0.2f;
     private float dashingCooldown = 1f;
 
