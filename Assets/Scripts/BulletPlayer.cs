@@ -19,7 +19,6 @@ public class BulletPlayer : MonoBehaviour
 
     SpriteRenderer sp_bullet;
 
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();

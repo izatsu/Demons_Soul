@@ -24,4 +24,5 @@ public class GameManager : MonoBehaviour
     {
         healthbar = Instantiate(CanvasHealthBar_Prefabs);
     }
+
 }
