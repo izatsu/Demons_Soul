@@ -14,8 +14,8 @@ public class PlayerHealth : MonoBehaviour
 
     Animator ani;
 
-    [SerializeField] HealthBar healthbar;
-    [SerializeField] HealthBar Amorrbar;
+    HealthBar healthbar;
+    HealthBar Amorrbar;
 
     private void Start()
     {

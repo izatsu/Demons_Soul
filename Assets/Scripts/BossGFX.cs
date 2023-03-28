@@ -26,11 +26,15 @@ public class BossGFX : MonoBehaviour
     float nextFireTime = 3f;
     public float fireRate = 3f;
 
+    HealthBar healthbar;
+
     private void Start()
     {
         //localscale = transform.localScale;
         ani = GetComponent<Animator>();
         aipath = GetComponent<AIPath>();
+        healthbar = GameObject.Find("HealthBarBoss").GetComponent<HealthBar>();
+        healthbar.SetMaxHealth(max_health);
         aid = GetComponent<AIDestinationSetter>();
         aid.target = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -88,6 +92,7 @@ public class BossGFX : MonoBehaviour
         if (collision.CompareTag("BulletPlayer"))
         {
             count_health += 2;
+            healthbar.SetHealth(max_health - count_health);
             Destroy(collision.gameObject);
             if (splitCount < maxSplits && count_health >= max_health)
             {

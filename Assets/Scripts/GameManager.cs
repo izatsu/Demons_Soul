@@ -32,6 +32,10 @@ public class GameManager : MonoBehaviour
     //[SerializeField] Transform pos_boss;
     GameObject Boss;
 
+    [Header("UI health Boss")]
+    [SerializeField] GameObject CanvasHealthBarBoss_Prefabs;
+    GameObject healthbarBoss;
+
     private void Awake()
     {
         player = Instantiate(Player_prefabs, pos_player.position, Quaternion.Euler(0, 0, 0));
@@ -51,6 +55,7 @@ public class GameManager : MonoBehaviour
         {
             hasBoss = true;
             Boss = Instantiate(boss_prefabs, pos_summon.position, Quaternion.Euler(0, 0, 0));
+            healthbarBoss = Instantiate(CanvasHealthBarBoss_Prefabs);
         }
     }
 

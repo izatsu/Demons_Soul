@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1916069830164669254}
   - component: {fileID: 676446653396060718}
   - component: {fileID: 1612876042938483566}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: CreateBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,9 +73,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1869315837
+  m_SortingLayer: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -924644764, guid: 9fbf17cbf9252a144af08f0ded28c9db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
