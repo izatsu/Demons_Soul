@@ -5,6 +5,8 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CreateBoss
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
