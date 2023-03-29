@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 212265124988056279}
   - component: {fileID: 4084815620260468854}
   - component: {fileID: 38155472662843326}
+  - component: {fileID: 3808452301842865572}
   m_Layer: 5
   m_Name: CanvasJoystick
   m_TagString: Untagged
@@ -103,6 +104,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3808452301842865572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742607709616315572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744d6b414386ccf4ebbe23e3cf2feb38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3115131635806464764
 GameObject:
   m_ObjectHideFlags: 0

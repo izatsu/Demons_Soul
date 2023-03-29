@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -23,13 +23,12 @@ public class GameManager : MonoBehaviour
 
     [Header("SummonBoss")]
     [SerializeField] GameObject SummonBoss_prefabs;
-    [SerializeField] Transform pos_summon;
     GameObject Summon;
     private bool hasBoss = false;
 
     [Header("Boss")]
     [SerializeField] GameObject boss_prefabs;
-    //[SerializeField] Transform pos_boss;
+    Vector3 pos_boss;
     GameObject Boss;
 
     [Header("UI health Boss")]
@@ -39,6 +38,8 @@ public class GameManager : MonoBehaviour
     [Header("ButtonReset")]
     [SerializeField] GameObject buttonReset;
 
+    string nameScene;
+
     private void Awake()
     {
         player = Instantiate(Player_prefabs, pos_player.position, Quaternion.Euler(0, 0, 0));
@@ -47,19 +48,45 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
+        Debug.Log("Chay start gamemanager");
+        nameScene = SceneManager.GetActiveScene().name;
+
         healthbar = Instantiate(CanvasHealthBar_Prefabs);
         joystickbutton = Instantiate(CanvasJOystick_Prefabs);
-        Summon = Instantiate(SummonBoss_prefabs, pos_summon.position, Quaternion.Euler(0, 0, 0));
+        /*if (nameScene == "RoomBoss1")
+            Summon = Instantiate(SummonBoss_prefabs, pos_summon.position, Quaternion.Euler(0, 0, 0));*/
     }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if(SceneManager.GetActiveScene().name == "RoomBoss1")
+        {
+            nameScene = SceneManager.GetActiveScene().name;
+            player.transform.position = Vector2.zero;
+            Summon = Instantiate(SummonBoss_prefabs,new Vector3(0,20,0), Quaternion.Euler(0, 0, 0));
+            pos_boss = Summon.transform.position;
+        }
+           
+    }
+
+
 
     private void Update()
     {
-        if (Summon == null && !hasBoss)
+        
+        if(nameScene == "RoomBoss1")
         {
-            hasBoss = true;
-            Boss = Instantiate(boss_prefabs, pos_summon.position, Quaternion.Euler(0, 0, 0));
-            healthbarBoss = Instantiate(CanvasHealthBarBoss_Prefabs);
-        }
+            if (Summon == null && !hasBoss)
+            {
+                hasBoss = true;
+                Boss = Instantiate(boss_prefabs, pos_boss, Quaternion.Euler(0, 0, 0));
+                healthbarBoss = Instantiate(CanvasHealthBarBoss_Prefabs);
+            }
+        }    
+        
 
         if (player.GetComponent<PlayerHealth>().isDie)
         {
@@ -71,6 +98,7 @@ public class GameManager : MonoBehaviour
 
     }
 
+    
 
     public void Reset()
     {
