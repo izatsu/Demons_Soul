@@ -36,6 +36,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject CanvasHealthBarBoss_Prefabs;
     GameObject healthbarBoss;
 
+    [Header("ButtonReset")]
+    [SerializeField] GameObject buttonReset;
+
     private void Awake()
     {
         player = Instantiate(Player_prefabs, pos_player.position, Quaternion.Euler(0, 0, 0));
@@ -57,6 +60,21 @@ public class GameManager : MonoBehaviour
             Boss = Instantiate(boss_prefabs, pos_summon.position, Quaternion.Euler(0, 0, 0));
             healthbarBoss = Instantiate(CanvasHealthBarBoss_Prefabs);
         }
+
+        if (player.GetComponent<PlayerHealth>().isDie)
+        {
+            Time.timeScale = 0;
+            buttonReset.SetActive(true);
+            player.GetComponent<PlayerHealth>().isDie = false;
+            Destroy(player);
+        }
+
     }
 
+
+    public void Reset()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("RoomBoss1");
+    }
 }
