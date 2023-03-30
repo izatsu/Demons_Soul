@@ -28,23 +28,38 @@ public class BossGFX : MonoBehaviour
 
     HealthBar healthbar;
 
+    bool isSleep = true;
+
     private void Start()
     {
-        //localscale = transform.localScale;
         ani = GetComponent<Animator>();
         aipath = GetComponent<AIPath>();
         healthbar = GameObject.Find("HealthBarBoss").GetComponent<HealthBar>();
         healthbar.SetMaxHealth(max_health);
         aid = GetComponent<AIDestinationSetter>();
         aid.target = GameObject.FindGameObjectWithTag("Player").transform;
-
     }
 
     private void Update()
     {
+        if (isSleep)
+        {
+            aipath.maxSpeed = 0;
+            Debug.Log("isSleep");
+        }
+        else
+        {
+            Debug.Log("!isSleep");
+            aipath.maxSpeed = 3;
+            ani.SetBool("isSleep", false);
+        } 
+            
+            
+        
+
         Flip();
 
-        if (Vector2.Distance(transform.position, aid.target.position) <= 5f)
+        if (Vector2.Distance(transform.position, aid.target.position) <= 5f && !isSleep)
         {
 
             ani.SetBool("isAttack", true);
@@ -56,7 +71,6 @@ public class BossGFX : MonoBehaviour
         }
         else
         {
-
             ani.SetBool("isAttack", false);
         }
 
@@ -91,9 +105,18 @@ public class BossGFX : MonoBehaviour
     {
         if (collision.CompareTag("BulletPlayer"))
         {
-            count_health += 2;
-            healthbar.SetHealth(max_health - count_health);
+            isSleep = false;
+
+            if (!isSleep)
+            {
+                count_health += 2;
+                healthbar.SetHealth(max_health - count_health);
+                
+            }
+
             Destroy(collision.gameObject);
+
+
             if (splitCount < maxSplits && count_health >= max_health)
             {
                 splitCount += 2;
@@ -121,12 +144,14 @@ public class BossGFX : MonoBehaviour
                                                              gameObject.transform.localScale.z - 0.3f);
 
 
-                newEnemy1.GetComponent<BossGFX>().aipath.maxSpeed += 0.5f;
-                newEnemy2.GetComponent<BossGFX>().aipath.maxSpeed += 0.5f;
+                newEnemy1.GetComponent<BossGFX>().aipath.maxSpeed += 0.3f;
+                newEnemy2.GetComponent<BossGFX>().aipath.maxSpeed += 0.3f;
 
                 newEnemy1.GetComponent<BossGFX>().count_health = 0;
                 newEnemy2.GetComponent<BossGFX>().count_health = 0;
             }
+
+
 
             if (count_health >= max_health)
                 Destroy(gameObject);

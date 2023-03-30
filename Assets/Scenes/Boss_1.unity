@@ -260,9 +260,10 @@ MonoBehaviour:
     type: 3}
   SummonBoss_prefabs: {fileID: 4955192847616357312, guid: f4ac3152f36f37c4f96dea4b5bb97bb2,
     type: 3}
-  pos_summon: {fileID: 575184761}
   boss_prefabs: {fileID: 9026839386094357379, guid: 7897cd4aafb8ccd418801f044f0d7ebe,
     type: 3}
+  CanvasHealthBarBoss_Prefabs: {fileID: 0}
+  buttonReset: {fileID: 0}
 --- !u!4 &1360261727
 Transform:
   m_ObjectHideFlags: 0
