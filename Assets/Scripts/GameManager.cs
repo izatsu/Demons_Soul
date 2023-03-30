@@ -66,6 +66,8 @@ public class GameManager : MonoBehaviour
         {
             nameScene = SceneManager.GetActiveScene().name;
             player.transform.position = Vector2.zero;
+            player.layer = LayerMask.NameToLayer("Layer 1");
+            player.GetComponent<SpriteRenderer>().sortingLayerName = "Layer 1";
             Summon = Instantiate(SummonBoss_prefabs,new Vector3(0,20,0), Quaternion.Euler(0, 0, 0));
             pos_boss = Summon.transform.position;
         }
@@ -88,13 +90,13 @@ public class GameManager : MonoBehaviour
         }    
         
 
-        if (player.GetComponent<PlayerHealth>().isDie)
+        /*if (player.GetComponent<PlayerHealth>().isDie)
         {
             Time.timeScale = 0;
             buttonReset.SetActive(true);
             player.GetComponent<PlayerHealth>().isDie = false;
             Destroy(player);
-        }
+        }*/
 
     }
 

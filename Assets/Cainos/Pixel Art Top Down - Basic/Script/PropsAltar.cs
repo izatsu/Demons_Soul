@@ -15,16 +15,28 @@ namespace Cainos.PixelArtTopDown_Basic
         private Color curColor;
         private Color targetColor;
 
+        private float timeDelay = 1.5f;
+        private bool hasPlayer = false;
+         [SerializeField] Loading load;
+
+
+        private void Start()
+        {
+            //load = GetComponent<Loading>();
+        }
+
         private void OnTriggerEnter2D(Collider2D other)
         {
             targetColor = new Color(1, 1, 1, 1);
-            SceneManager.LoadScene("RoomBoss1");
-
+            hasPlayer = true;
+                  
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
             targetColor = new Color(1, 1, 1, 0);
+            hasPlayer = false;
+            timeDelay = 1.5f;
         }
 
        
@@ -37,6 +49,21 @@ namespace Cainos.PixelArtTopDown_Basic
             {
                 r.color = curColor;
             }
+
+            Debug.Log("Time: " + timeDelay);
+            if (hasPlayer)
+            {
+                timeDelay -= Time.deltaTime;
+            }
+            if(timeDelay <= 0)
+            {
+                //SceneManager.LoadScene("RoomBoss1");
+                load.LoadScene(2);
+                timeDelay = 1.5f;
+                
+            }    
+                
+
         }
     }
 }
