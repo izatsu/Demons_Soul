@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     [Header("SummonBoss")]
     [SerializeField] GameObject SummonBoss_prefabs;
     GameObject Summon;
-    private bool hasBoss = false;
+    private bool hasBoss1 = false;
 
     [Header("Boss")]
     [SerializeField] GameObject boss_prefabs;
@@ -36,15 +36,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject CanvasHealthBarBoss_Prefabs;
     GameObject healthbarBoss;
 
-   
 
+    [Header("WinBoss")]
+    [SerializeField] GameObject Tele_Prefab;
+    public bool winboss1 = false;
+    public bool winboss2 = false;
+    GameObject Tele;
 
     string nameScene;
 
     Vector3 posPl;
 
     [SerializeField] static GameManager instance;
-    public bool playerisDie = false;
 
     private void Awake()
     {
@@ -113,7 +116,7 @@ public class GameManager : MonoBehaviour
 
     public void RespawnPlayer()
     {
-        hasBoss = false;
+        hasBoss1 = false;
         Destroy(player.gameObject);
         SpawnPlayer();
     } 
@@ -132,7 +135,16 @@ public class GameManager : MonoBehaviour
             player.GetComponent<SpriteRenderer>().sortingLayerName = "Layer 1";
             Summon = Instantiate(SummonBoss_prefabs,new Vector3(0,20,0), Quaternion.Euler(0, 0, 0));
             pos_boss = Summon.transform.position;
-        }          
+        }
+
+        if (SceneManager.GetActiveScene().name == "WorldMap" && winboss1)
+        {
+            Debug.Log("Chay ham khi doi scene ");
+            nameScene = SceneManager.GetActiveScene().name;
+            player.transform.position = new Vector3(25.87f, 67.51f, 0f);
+            player.layer = LayerMask.NameToLayer("Layer 2");
+            player.GetComponent<SpriteRenderer>().sortingLayerName = "Layer 2";         
+        }
     }
 
 
@@ -143,16 +155,27 @@ public class GameManager : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "RoomBoss1")
         {
             Debug.Log("Dang o scene boss");
-            Debug.Log("hasBoss: " + hasBoss);
+            Debug.Log("hasBoss: " + hasBoss1);
             if (Summon != null)
-                hasBoss = false;
-            if (Summon == null && !hasBoss)
+                hasBoss1 = false;
+            if (Summon == null && !hasBoss1 && !winboss1)
             {
                 Debug.Log("Tao boss");
-                hasBoss = true;
+                hasBoss1 = true;
                 Boss = Instantiate(boss_prefabs, pos_boss, Quaternion.Euler(0, 0, 0));
                 healthbarBoss = Instantiate(CanvasHealthBarBoss_Prefabs);
             }
+
+            if (Boss == null && hasBoss1)
+            {
+                winboss1 = true;
+                hasBoss1 = false;
+                Tele = Instantiate(Tele_Prefab, pos_boss, Quaternion.Euler(0, 0, 0));
+                Tele.GetComponent<Cainos.PixelArtTopDown_Basic.PropsAltar>().number = 3;
+                Tele.GetComponent<Cainos.PixelArtTopDown_Basic.PropsAltar>().loadScene = 1;
+                
+            }    
+               
         }
 
         

@@ -12,8 +12,7 @@ public class BossGFX : MonoBehaviour
     public int count_health = 0;
 
 
-    public int splitCount = 0; // số lượng tách
-    private int maxSplits = 6; // số lượng tối đa được tách
+   
 
 
     Animator ani;
@@ -29,6 +28,7 @@ public class BossGFX : MonoBehaviour
     HealthBar healthbar;
 
     bool isSleep = true;
+    float count_exitSleep = 2;
 
     private void Start()
     {
@@ -109,56 +109,20 @@ public class BossGFX : MonoBehaviour
     {
         if (collision.CompareTag("BulletPlayer"))
         {
-            isSleep = false;
+            Destroy(collision.gameObject);
+            count_exitSleep--;
+            if (count_exitSleep <= 0)
+                isSleep = false;
 
             if (!isSleep)
             {
                 count_health += 2;
                 healthbar.SetHealth(max_health - count_health);
-                
+
             }
-
-            Destroy(collision.gameObject);
-
-
-            if (splitCount < maxSplits && count_health >= max_health)
-            {
-                splitCount += 2;
-                float localx = transform.localScale.x;
-                if (transform.localScale.x < 0)
-                    localx = transform.localScale.x * -1;
-
-                GameObject newEnemy1 = Instantiate(gameObject, transform.position + new Vector3(-1, 2, 0), Quaternion.Euler(0, 0, 0));
-                GameObject newEnemy2 = Instantiate(gameObject, transform.position + new Vector3(-1, -2, 0), Quaternion.Euler(0, 0, 0));
-
-                newEnemy1.GetComponent<BossGFX>().count_health = 0;
-                newEnemy2.GetComponent<BossGFX>().count_health = 0;
-
-                newEnemy1.GetComponent<BossGFX>().max_health -= 10;
-                newEnemy2.GetComponent<BossGFX>().max_health -= 10;
-
-                Destroy(gameObject);
-
-                newEnemy1.transform.localScale = new Vector3(localx - 0.3f,
-                                                             gameObject.transform.localScale.y - 0.3f,
-                                                             gameObject.transform.localScale.z - 0.3f);
-
-                newEnemy2.transform.localScale = new Vector3(localx - 0.3f,
-                                                             gameObject.transform.localScale.y - 0.3f,
-                                                             gameObject.transform.localScale.z - 0.3f);
-
-
-                newEnemy1.GetComponent<BossGFX>().aipath.maxSpeed += 0.3f;
-                newEnemy2.GetComponent<BossGFX>().aipath.maxSpeed += 0.3f;
-
-                newEnemy1.GetComponent<BossGFX>().count_health = 0;
-                newEnemy2.GetComponent<BossGFX>().count_health = 0;
-            }
-
-
 
             if (count_health >= max_health)
-                Destroy(gameObject);
+                Destroy(gameObject);                    
         }
     }
 }

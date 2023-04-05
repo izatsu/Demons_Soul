@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0}
-  speed: 3.5
+  speed: 4
   DashingPower: 10
 --- !u!114 &2683944982563116792
 MonoBehaviour:
@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6c262f7684b7b34ab09d56540dd91be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 6
+  health: 1000
   amorr: 5
   isDie: 0
 --- !u!1 &2683944982776101575

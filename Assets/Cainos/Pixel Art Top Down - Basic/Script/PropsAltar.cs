@@ -17,12 +17,17 @@ namespace Cainos.PixelArtTopDown_Basic
 
         private float timeDelay = 1.5f;
         private bool hasPlayer = false;
-         [SerializeField] Loading load;
+        Loading load;
+        public int loadScene; 
 
+        GameManager gameMn;
+        public int number;
+        
 
         private void Start()
         {
-            //load = GetComponent<Loading>();
+            gameMn = FindObjectOfType<GameManager>();
+            load = GameObject.Find("SceneLoaderCanvas").GetComponent<Loading>();
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -50,18 +55,54 @@ namespace Cainos.PixelArtTopDown_Basic
                 r.color = curColor;
             }
 
-            Debug.Log("Time: " + timeDelay);
-            if (hasPlayer)
-            {
-                timeDelay -= Time.deltaTime;
-            }
-            if(timeDelay <= 0)
-            {
-                //SceneManager.LoadScene("RoomBoss1");
-                load.LoadScene(2);
-                timeDelay = 1.5f;
+            /*if(SceneManager.GetActiveScene().name == "WorldMap")
+            {*/
+                switch(number)
+                {
+                    case 1:
+                        if (hasPlayer && !gameMn.winboss1)
+                        {
+                            timeDelay -= Time.deltaTime;
+                        }
+
+                        if (timeDelay <= 0)
+                        {
+                            load.LoadScene(loadScene);
+                            timeDelay = 1.5f;
+                        }
+                        break;
+                    case 2:
+                        if (hasPlayer && !gameMn.winboss2)
+                        {
+                            timeDelay -= Time.deltaTime;
+                        }
+
+                        if (timeDelay <= 0)
+                        {
+                            load.LoadScene(loadScene);
+                            timeDelay = 1.5f;
+                        }
+                        break;
+                    case 3:
+                        Debug.Log("Win boss: " + gameMn.winboss1);
+                        if (hasPlayer && gameMn.winboss1)
+                        {
+                            timeDelay -= Time.deltaTime;
+                        }
+
+                        if (timeDelay <= 0)
+                        {
+                            Debug.Log("da ve worldmap");
+                            load.LoadScene(loadScene);
+                            timeDelay = 1.5f;
+                        }
+                        break;
+                }
+
                 
-            }    
+              
+
+            
                 
 
         }
