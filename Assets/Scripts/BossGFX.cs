@@ -59,20 +59,24 @@ public class BossGFX : MonoBehaviour
 
         Flip();
 
-        if (Vector2.Distance(transform.position, aid.target.position) <= 5f && !isSleep)
+        if(aid.target != null)
         {
-
-            ani.SetBool("isAttack", true);
-            if (Time.time > nextFireTime)
+            if (Vector2.Distance(transform.position, aid.target.position) <= 5f && !isSleep)
             {
-                Fire();
-                nextFireTime = Time.time + 1f / fireRate;
+
+                ani.SetBool("isAttack", true);
+                if (Time.time > nextFireTime)
+                {
+                    Fire();
+                    nextFireTime = Time.time + 1f / fireRate;
+                }
             }
-        }
-        else
-        {
-            ani.SetBool("isAttack", false);
-        }
+            else
+            {
+                ani.SetBool("isAttack", false);
+            }
+        }    
+        
 
     }
 

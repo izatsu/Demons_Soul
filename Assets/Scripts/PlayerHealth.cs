@@ -53,6 +53,12 @@ public class PlayerHealth : MonoBehaviour
         
     }
 
+    private void DestroyP()
+    {
+        Destroy(gameObject);
+    } 
+        
+
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -74,7 +80,8 @@ public class PlayerHealth : MonoBehaviour
                 if(health <= 0)
                 {
                     isDie = true;
-                    ani.SetBool("isDie", true);                           
+                    ani.SetBool("isDie", true);
+                    Invoke("DestroyP", 2f);
                 }
             }          
         }            

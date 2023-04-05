@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Transform pos_player;
     GameObject player;
 
+
     [Header("UI health player")]
     [SerializeField] GameObject CanvasHealthBar_Prefabs;
     GameObject healthbar;
@@ -35,43 +36,103 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject CanvasHealthBarBoss_Prefabs;
     GameObject healthbarBoss;
 
-    [Header("ButtonReset")]
-    [SerializeField] GameObject buttonReset;
+   
+
 
     string nameScene;
 
+    Vector3 posPl;
+
+    [SerializeField] static GameManager instance;
+    public bool playerisDie = false;
+
     private void Awake()
     {
-        player = Instantiate(Player_prefabs, pos_player.position, Quaternion.Euler(0, 0, 0));
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        
 
     }
 
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        Debug.Log("chay start cua gameManager");
         SceneManager.sceneLoaded += OnSceneLoaded;
-
-        Debug.Log("Chay start gamemanager");
         nameScene = SceneManager.GetActiveScene().name;
+        posPl = Vector3.zero;
 
-        healthbar = Instantiate(CanvasHealthBar_Prefabs);
-        joystickbutton = Instantiate(CanvasJOystick_Prefabs);
-        /*if (nameScene == "RoomBoss1")
-            Summon = Instantiate(SummonBoss_prefabs, pos_summon.position, Quaternion.Euler(0, 0, 0));*/
+
+        if (player == null)
+        {
+            player = Instantiate(Player_prefabs, pos_player.position, Quaternion.Euler(0, 0, 0));
+            DontDestroyOnLoad(player);
+            Debug.Log("Tao Player");
+        }
+        else
+        {
+            Destroy(player);
+        }
+
+        if (healthbar == null)
+        {
+            healthbar = Instantiate(CanvasHealthBar_Prefabs);
+            DontDestroyOnLoad(healthbar);
+        }
+        else
+        {
+            Destroy(healthbar);
+        }
+
+        if (joystickbutton == null)
+        {
+            joystickbutton = Instantiate(CanvasJOystick_Prefabs);
+            DontDestroyOnLoad(joystickbutton);
+        }
+        else
+        {
+            Destroy(joystickbutton);
+        }
+        
+
     }
+
+    void SpawnPlayer()
+    {
+        GameObject newPlayer = Instantiate(Player_prefabs, new Vector3(1.44f, 27.88f, 0f), Quaternion.Euler(0, 0, 0));
+        player = newPlayer;
+        DontDestroyOnLoad(player);
+    } 
+
+    public void RespawnPlayer()
+    {
+        hasBoss = false;
+        Destroy(player.gameObject);
+        SpawnPlayer();
+    } 
+        
+ 
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+
         if(SceneManager.GetActiveScene().name == "RoomBoss1")
         {
+            Debug.Log("Chay ham khi doi scene ");
             nameScene = SceneManager.GetActiveScene().name;
             player.transform.position = Vector2.zero;
             player.layer = LayerMask.NameToLayer("Layer 1");
             player.GetComponent<SpriteRenderer>().sortingLayerName = "Layer 1";
             Summon = Instantiate(SummonBoss_prefabs,new Vector3(0,20,0), Quaternion.Euler(0, 0, 0));
             pos_boss = Summon.transform.position;
-        }
-           
+        }          
     }
 
 
@@ -79,32 +140,28 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         
-        if(nameScene == "RoomBoss1")
+        if(SceneManager.GetActiveScene().name == "RoomBoss1")
         {
+            Debug.Log("Dang o scene boss");
+            Debug.Log("hasBoss: " + hasBoss);
+            if (Summon != null)
+                hasBoss = false;
             if (Summon == null && !hasBoss)
             {
+                Debug.Log("Tao boss");
                 hasBoss = true;
                 Boss = Instantiate(boss_prefabs, pos_boss, Quaternion.Euler(0, 0, 0));
                 healthbarBoss = Instantiate(CanvasHealthBarBoss_Prefabs);
             }
-        }    
+        }
+
         
-
-        /*if (player.GetComponent<PlayerHealth>().isDie)
+        if(player == null)
         {
-            Time.timeScale = 0;
-            buttonReset.SetActive(true);
-            player.GetComponent<PlayerHealth>().isDie = false;
-            Destroy(player);
-        }*/
-
-    }
-
-    
-
-    public void Reset()
-    {
-        Time.timeScale = 1;
-        SceneManager.LoadScene("RoomBoss1");
+            SceneManager.LoadScene("WorldMap");
+            SpawnPlayer();
+        } 
+            
+            
     }
 }

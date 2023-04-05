@@ -26,7 +26,7 @@ public class PlayerMove : MonoBehaviour
 
     void Start()
     {
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
         rb = GetComponent<Rigidbody2D>();
         joystick = FindObjectOfType<FixedJoystick>().GetComponent<FixedJoystick>();
         ani = GetComponent<Animator>();
