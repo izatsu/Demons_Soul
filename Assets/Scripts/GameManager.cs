@@ -168,6 +168,7 @@ public class GameManager : MonoBehaviour
 
             if (Boss == null && hasBoss1)
             {
+                Destroy(healthbarBoss);
                 winboss1 = true;
                 hasBoss1 = false;
                 Tele = Instantiate(Tele_Prefab, pos_boss, Quaternion.Euler(0, 0, 0));
