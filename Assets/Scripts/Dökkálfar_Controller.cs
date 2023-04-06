@@ -14,17 +14,20 @@ public class Dökkálfar_Controller : MonoBehaviour
 
     bool isFacingRight = true;
     Rigidbody2D rb;
+    GFX_Dökkálfar HealthBoss;
+    Vector3 direction = Vector3.zero;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        HealthBoss = GetComponent<GFX_Dökkálfar>();
     }
 
     void Update()
     {
 
-        if (!isShooting)
+        if (!isShooting && !HealthBoss.checkDie)
         {
             StartCoroutine(Shoot());
 
@@ -35,7 +38,11 @@ public class Dökkálfar_Controller : MonoBehaviour
 
     private void flip()
     {
-        Vector3 direction = player.position - transform.position;
+        if(player != null)
+        {
+            direction = player.position - transform.position;
+        }
+        
 
         if ((isFacingRight && direction.x < 0) || (!isFacingRight && direction.x > 0))
         {
@@ -69,4 +76,5 @@ public class Dökkálfar_Controller : MonoBehaviour
 
         isShooting = false;
     }
+
 }

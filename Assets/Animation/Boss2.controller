@@ -196,6 +196,31 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &-4849098380449392155
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: die
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: -5482407267860513835}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.3803176
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75000006
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &-4322612507143591796
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -293,16 +318,17 @@ AnimatorStateMachine:
     m_Position: {x: -180, y: -40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5482407267860513835}
-    m_Position: {x: 60, y: -140, z: 0}
+    m_Position: {x: 130, y: -190, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8462412705415167250}
     m_Position: {x: -270, y: 80, z: 0}
   m_ChildStateMachines: []
-  m_AnyStateTransitions: []
+  m_AnyStateTransitions:
+  - {fileID: -4849098380449392155}
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -500, y: 20, z: 0}
+  m_AnyStatePosition: {x: 500, y: -180, z: 0}
   m_EntryPosition: {x: 80, y: 330, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
@@ -347,6 +373,12 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: run
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: die
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -431,8 +463,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackCount: 0
   maxAttackCount: 3
-  distanceThreshold: 20
-  speed: 5
+  distanceThreshold: 15
+  speed: 4
   attackDistance: 3
   speedRotation: 180
 --- !u!1101 &4381123686587683912

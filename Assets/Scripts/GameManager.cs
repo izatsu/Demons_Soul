@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -42,6 +43,11 @@ public class GameManager : MonoBehaviour
     public bool winboss1 = false;
     public bool winboss2 = false;
     GameObject Tele;
+
+    [Header("Dökkálfar")]
+    [SerializeField] GameObject Dökkálfar_prefabs;
+    //Vector3 pos_boss;
+    GameObject Dökkálfar;
 
     string nameScene;
 
@@ -103,7 +109,10 @@ public class GameManager : MonoBehaviour
         {
             Destroy(joystickbutton);
         }
-        
+
+        Dökkálfar = Instantiate(Dökkálfar_prefabs, transform.position,quaternion.identity);
+
+
 
     }
 
