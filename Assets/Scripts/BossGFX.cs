@@ -50,7 +50,7 @@ public class BossGFX : MonoBehaviour
         else
         {
             Debug.Log("!isSleep");
-            aipath.maxSpeed = 3;
+            aipath.maxSpeed = 4;
             ani.SetBool("isSleep", false);
         } 
             

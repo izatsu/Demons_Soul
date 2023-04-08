@@ -97,7 +97,21 @@ namespace Cainos.PixelArtTopDown_Basic
                             timeDelay = 1.5f;
                         }
                         break;
-                }
+                    case 4:
+                        Debug.Log("Win boss: " + gameMn.winboss2);
+                        if (hasPlayer && gameMn.winboss2)
+                        {
+                            timeDelay -= Time.deltaTime;
+                        }
+
+                        if (timeDelay <= 0)
+                        {
+                            Debug.Log("da ve worldmap");
+                            load.LoadScene(loadScene);
+                            timeDelay = 1.5f;
+                        }
+                        break;
+            }
 
                 
               

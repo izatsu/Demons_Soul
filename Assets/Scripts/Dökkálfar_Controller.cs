@@ -58,7 +58,7 @@ public class Dökkálfar_Controller : MonoBehaviour
     {
         isShooting = true;
 
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
 
         for (int i = 0; i < 5; i++)
         {

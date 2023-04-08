@@ -623,6 +623,6 @@ MonoBehaviour:
   attackCount: 0
   maxAttackCount: 3
   distanceThreshold: 15
-  speed: 4
+  speed: 7
   attackDistance: 3
   speedRotation: 180

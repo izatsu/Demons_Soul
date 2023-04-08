@@ -9,10 +9,13 @@ public class GFX_Dökkálfar : MonoBehaviour
 
     Animator ani;
     public bool checkDie = false;
+    HealthBar healthbar;
 
     void Start()
     {
         ani = GetComponent<Animator>();
+        healthbar = GameObject.Find("HealthBarBoss").GetComponent<HealthBar>();
+        healthbar.SetMaxHealth(Dökkálfar_health);
     }
 
     void Update()
@@ -28,6 +31,7 @@ public class GFX_Dökkálfar : MonoBehaviour
         if (collision.CompareTag("BulletPlayer"))
         {
             countDökkálfar_health++;
+            healthbar.SetHealth(Dökkálfar_health - countDökkálfar_health);
             Destroy(collision);
             if(countDökkálfar_health >= Dökkálfar_health)
             {

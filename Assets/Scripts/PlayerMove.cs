@@ -24,6 +24,8 @@ public class PlayerMove : MonoBehaviour
     //Check player isLive
     PlayerHealth pl_h;
 
+    float time = 1f;
+
     void Start()
     {
         //DontDestroyOnLoad(this);
@@ -49,13 +51,27 @@ public class PlayerMove : MonoBehaviour
         ani.SetFloat("Vertical", direction.y);
         ani.SetFloat("Speed", direction.sqrMagnitude);
 
-        /*if (Input.GetKey(KeyCode.LeftShift) && canDash && !pl_h.isDie)
+        if (Input.GetKey(KeyCode.LeftShift) && canDash && !pl_h.isDie)
         {
             StartCoroutine(Dash());
-        }*/
+            Debug.Log("Da dash");
+        }
 
         if (pl_h.isDie)
             rb.velocity = Vector2.zero;
+
+        if (!canDash)
+        {
+            time -= Time.deltaTime;
+        }
+        else
+            time = 1f;
+        if(time <= 0)
+        {
+            canDash = true;
+            time = 1f;
+        } 
+            
     }
 
     private void FixedUpdate()
@@ -73,6 +89,7 @@ public class PlayerMove : MonoBehaviour
         if (canDash && !pl_h.isDie)
         {
             StartCoroutine(Dash());
+            Debug.Log("Da dash");
         }
     }
 
@@ -88,6 +105,7 @@ public class PlayerMove : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
+        time = 1f;
     }
 
 }
