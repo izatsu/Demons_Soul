@@ -27,6 +27,11 @@ public class GameManager : MonoBehaviour
     GameObject Summon;
     private bool hasBoss1 = false;
 
+    [Header("DoorBoss1")]
+    [SerializeField] GameObject Door1_prefab;
+    GameObject door1;
+
+
     [Header("Boss")]
     [SerializeField] GameObject boss_prefabs;
     Vector3 pos_boss;
@@ -56,6 +61,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject SummonBoss2_prefabs;
     GameObject Summon2;
     private bool hasBoss2 = false;
+
+    [Header("DoorBoss2")]
+    [SerializeField] GameObject Door2_prefab;
+    GameObject door2;
 
 
     [Header("UI Setting")]
@@ -239,6 +248,7 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("Tao boss");
                 hasBoss1 = true;
+                door1 = Instantiate(Door1_prefab,new Vector3(-1.9f, 10.7f,0f) , Quaternion.Euler(0, 0, 0));
                 Boss = Instantiate(boss_prefabs, pos_boss, Quaternion.Euler(0, 0, 0));
                 healthbarBoss = Instantiate(CanvasHealthBarBoss_Prefabs);
             }
@@ -266,6 +276,7 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("Tao boss");
                 hasBoss2 = true;
+                door2 = Instantiate(Door2_prefab, new Vector3(-2f, 11f, 0f), Quaternion.Euler(0, 0, 0));
                 Dökkálfar = Instantiate(Dökkálfar_prefabs, pos_boss2, Quaternion.Euler(0, 0, 0));
                 healthbarBoss2 = Instantiate(CanvasHealthBarBoss2_Prefabs);
             }

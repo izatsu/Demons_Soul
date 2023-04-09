@@ -30,6 +30,8 @@ public class BossGFX : MonoBehaviour
     bool isSleep = true;
     float count_exitSleep = 2;
 
+    float time_attack = 2f;
+
     private void Start()
     {
         ani = GetComponent<Animator>();
@@ -65,16 +67,28 @@ public class BossGFX : MonoBehaviour
             {
 
                 ani.SetBool("isAttack", true);
-                if (Time.time > nextFireTime)
+                /*if (Time.time > nextFireTime)
                 {
                     Fire();
-                    nextFireTime = Time.time + 1f / fireRate;
-                }
+                    nextFireTime = Time.time + 1f / fireRate;                  
+                }*/
             }
             else
             {
                 ani.SetBool("isAttack", false);
             }
+
+            if(!isSleep)
+            {
+                time_attack -= Time.deltaTime;
+                if (time_attack <= 0)
+                {
+                    time_attack = 2f;
+                    Fire();
+                }
+            }    
+           
+                
         }    
         
 

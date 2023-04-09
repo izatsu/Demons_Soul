@@ -30,7 +30,7 @@ public class PlayerMove : MonoBehaviour
     {
         //DontDestroyOnLoad(this);
         rb = GetComponent<Rigidbody2D>();
-        joystick = FindObjectOfType<FixedJoystick>().GetComponent<FixedJoystick>();
+        joystick = FindObjectOfType<FloatingJoystick>().GetComponent<FloatingJoystick>();
         ani = GetComponent<Animator>();
         pl_h = GetComponent<PlayerHealth>();
 
