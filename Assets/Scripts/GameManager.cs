@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-
 public class GameManager : MonoBehaviour
 {
     [Header("Player")]
@@ -85,6 +84,14 @@ public class GameManager : MonoBehaviour
 
     bool checkUse1 = false;
     bool checkUse2 = false;
+
+
+    //Sound
+    [SerializeField] AudioSource sound_buttonBack;
+    [SerializeField] AudioSource sound_buttonOption;
+    [SerializeField] AudioSource sound_WorldMap;
+    [SerializeField] AudioSource sound_RoomBoss1;
+    [SerializeField] AudioSource sound_RoomBoss2;
 
     private void Awake()
     {
@@ -218,6 +225,7 @@ public class GameManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "MainMenu")
         {
+            sound_WorldMap.Stop();
             player.transform.position = new Vector2(-4.52f, -8.89f);
             player.layer = LayerMask.NameToLayer("Layer 1");
             player.GetComponent<SpriteRenderer>().sortingLayerName = "Layer 1";
@@ -231,8 +239,12 @@ public class GameManager : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "WorldMap")
         {
             OnUIGame();
+            sound_WorldMap.Play();
             Setting.SetActive(true);
-        }    
+        }
+
+        sound_RoomBoss1.Stop();
+        sound_RoomBoss2.Stop();
     }
 
     private void Update()
@@ -248,6 +260,8 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("Tao boss");
                 hasBoss1 = true;
+                sound_RoomBoss1.Play();
+                sound_WorldMap.Stop();
                 door1 = Instantiate(Door1_prefab,new Vector3(-1.9f, 10.7f,0f) , Quaternion.Euler(0, 0, 0));
                 Boss = Instantiate(boss_prefabs, pos_boss, Quaternion.Euler(0, 0, 0));
                 healthbarBoss = Instantiate(CanvasHealthBarBoss_Prefabs);
@@ -276,6 +290,8 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("Tao boss");
                 hasBoss2 = true;
+                sound_RoomBoss2.Play();
+                sound_WorldMap.Stop();
                 door2 = Instantiate(Door2_prefab, new Vector3(-2f, 11f, 0f), Quaternion.Euler(0, 0, 0));
                 Dökkálfar = Instantiate(Dökkálfar_prefabs, pos_boss2, Quaternion.Euler(0, 0, 0));
                 healthbarBoss2 = Instantiate(CanvasHealthBarBoss2_Prefabs);
@@ -297,7 +313,8 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("WorldMap");
             SpawnPlayer();
-        }                         
+        }      
+          
     }
 
 
@@ -318,6 +335,7 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
+        sound_buttonOption.Play();
         Time.timeScale = 0;
         OffUIGame();
         MenuSetting.SetActive(true);
@@ -325,6 +343,7 @@ public class GameManager : MonoBehaviour
 
     public void ResumeGame()
     {
+        sound_buttonBack.Play();
         Time.timeScale = 1;
         OnUIGame();
         MenuSetting.SetActive(false);
@@ -332,6 +351,7 @@ public class GameManager : MonoBehaviour
 
     public void BackMenuGame()
     {
+        sound_buttonBack.Play();
         Time.timeScale = 1;       
         SceneManager.LoadScene("MainMenu");
     }    

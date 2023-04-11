@@ -15,6 +15,9 @@ public class PlayerAttack : MonoBehaviour
 
     Button attack_button;
 
+    [SerializeField] AudioSource sound_attack;
+
+
     private void Start()
     {
         pl_h = GetComponent<PlayerHealth>();
@@ -50,7 +53,8 @@ public class PlayerAttack : MonoBehaviour
                 Instantiate(bullet_prefabs, pos_attack1.position, Quaternion.Euler(0, 0, 0));
                 Instantiate(bullet_prefabs, pos_attack2.position, Quaternion.Euler(0, 0, 0));
                 Debug.Log("2 vien"); 
-            }          
+            }
+            sound_attack.Play();
             canAttack = false;
         }
     }

@@ -22,7 +22,7 @@ public class BossGFX : MonoBehaviour
 
     public GameObject bulletPrefab;
     public float bulletSpeed = 10.0f;
-    float nextFireTime = 3f;
+    //float nextFireTime = 3f;
     public float fireRate = 3f;
 
     HealthBar healthbar;
@@ -30,7 +30,7 @@ public class BossGFX : MonoBehaviour
     bool isSleep = true;
     float count_exitSleep = 2;
 
-    float time_attack = 2f;
+    float time_attack = 1.5f;
 
     private void Start()
     {
@@ -83,7 +83,7 @@ public class BossGFX : MonoBehaviour
                 time_attack -= Time.deltaTime;
                 if (time_attack <= 0)
                 {
-                    time_attack = 2f;
+                    time_attack = 1.5f;
                     Fire();
                 }
             }    

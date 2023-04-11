@@ -34,7 +34,7 @@ public class PlayerHealth : MonoBehaviour
         {
             time_dontHurt += Time.deltaTime;
             //Debug.Log("Time: " + time_dontHurt);
-            if (time_dontHurt >= 5)
+            if (time_dontHurt >= 3)
             {
                 if (amorr < 5)
                 {

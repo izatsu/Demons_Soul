@@ -11,6 +11,7 @@ public class Dökkálfar_Controller : MonoBehaviour
     public float bulletDistance = 5f;
 
     private bool isShooting = false;
+    private int shootCount = 0;
 
     bool isFacingRight = true;
     Rigidbody2D rb;
@@ -38,11 +39,11 @@ public class Dökkálfar_Controller : MonoBehaviour
 
     private void flip()
     {
-        if(player != null)
+        if (player != null)
         {
             direction = player.position - transform.position;
         }
-        
+
 
         if ((isFacingRight && direction.x < 0) || (!isFacingRight && direction.x > 0))
         {
@@ -74,7 +75,32 @@ public class Dökkálfar_Controller : MonoBehaviour
             yield return new WaitForSeconds(shootInterval);
         }
 
+        if (++shootCount >= 5)
+        {
+            ShootCircularBarrage();
+            shootCount = 0;
+        }
+
         isShooting = false;
     }
+
+    void ShootCircularBarrage()
+    {
+        int numBullets = 16;
+        float angleStep = 360f / numBullets;
+        float currentAngle = 0f;
+
+        for (int i = 0; i < numBullets; i++)
+        {
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+
+            Vector3 direction = Quaternion.Euler(0, 0, currentAngle) * Vector3.right;
+
+            bullet.GetComponent<Rigidbody2D>().velocity = direction.normalized * bulletSpeed;
+
+            currentAngle += angleStep;
+        }
+    }
+
 
 }
