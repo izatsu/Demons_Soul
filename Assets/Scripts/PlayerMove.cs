@@ -26,6 +26,9 @@ public class PlayerMove : MonoBehaviour
 
     float time = 1f;
 
+    
+
+
     void Start()
     {
         //DontDestroyOnLoad(this);

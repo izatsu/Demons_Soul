@@ -27,6 +27,7 @@ public class BulletPlayer : MonoBehaviour
         sp_bullet = GetComponent<SpriteRenderer>();
 
         sp_bullet.sortingLayerName = pl_move.GetComponent<SpriteRenderer>().sortingLayerName;
+        gameObject.layer = pl_move.gameObject.layer;
 
         pos_start = transform.position;
 

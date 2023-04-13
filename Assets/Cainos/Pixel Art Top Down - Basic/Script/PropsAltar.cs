@@ -32,16 +32,24 @@ namespace Cainos.PixelArtTopDown_Basic
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            targetColor = new Color(1, 1, 1, 1);
-            hasPlayer = true;
+            if(other.CompareTag("Player"))
+            {
+                targetColor = new Color(1, 1, 1, 1);
+                hasPlayer = true;
+            }    
+            
                   
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            targetColor = new Color(1, 1, 1, 0);
-            hasPlayer = false;
-            timeDelay = 1.5f;
+            if (other.CompareTag("Player"))
+            {
+                targetColor = new Color(1, 1, 1, 0);
+                hasPlayer = false;
+                timeDelay = 1.5f;
+            }    
+               
         }
 
        

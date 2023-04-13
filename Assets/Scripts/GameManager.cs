@@ -93,8 +93,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] AudioSource sound_RoomBoss1;
     [SerializeField] AudioSource sound_RoomBoss2;
 
+    //fps
+    public int frameRate = 60;
+
+
     private void Awake()
     {
+        Application.targetFrameRate = frameRate;
+
         if (instance == null)
         {
             instance = this;
