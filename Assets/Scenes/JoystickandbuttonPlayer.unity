@@ -228,6 +228,21 @@ MonoBehaviour:
     type: 3}
   CanvasJOystick_Prefabs: {fileID: 5658608774942047230, guid: fea06e41db5e90a4393ef8b0412d7f2a,
     type: 3}
+  SummonBoss_prefabs: {fileID: 0}
+  Door1_prefab: {fileID: 0}
+  boss_prefabs: {fileID: 0}
+  CanvasHealthBarBoss_Prefabs: {fileID: 0}
+  Tele_Prefab: {fileID: 0}
+  winboss1: 0
+  winboss2: 0
+  "D\xF6kk\xE1lfar_prefabs": {fileID: 0}
+  CanvasHealthBarBoss2_Prefabs: {fileID: 0}
+  SummonBoss2_prefabs: {fileID: 0}
+  Door2_prefab: {fileID: 0}
+  Canvassetting_Prefab: {fileID: 0}
+  CavasMenusetting_Prefab: {fileID: 0}
+  Canvasguide_Prefab: {fileID: 0}
+  frameRate: 60
 --- !u!4 &110624840
 Transform:
   m_ObjectHideFlags: 0
