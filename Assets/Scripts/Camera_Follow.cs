@@ -13,7 +13,7 @@ public class Camera_Follow : MonoBehaviour
     private void Start()
     {
 
-        Invoke("delay", 1f);
+        Invoke("delay", 0.3f);
 
     }
 

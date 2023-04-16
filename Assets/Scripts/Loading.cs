@@ -11,6 +11,7 @@ public class Loading : MonoBehaviour
 
     public void LoadScene(int index)
     {
+        AudioManager.Instance.PlaySFX("ButtonBack");
         StartCoroutine(LoadScene_Coroutine(index));
     }
 

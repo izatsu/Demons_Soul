@@ -54,7 +54,8 @@ public class PlayerAttack : MonoBehaviour
                 Instantiate(bullet_prefabs, pos_attack2.position, Quaternion.Euler(0, 0, 0));
                 Debug.Log("2 vien"); 
             }
-            sound_attack.Play();
+            //sound_attack.Play();
+            AudioManager.Instance.PlaySFX("ButtonAttack");
             canAttack = false;
         }
     }

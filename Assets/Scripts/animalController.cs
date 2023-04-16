@@ -28,8 +28,8 @@ public class animalController : MonoBehaviour
     Transform player;
     
 
-    int maxhealth = 5;
-    int currenthealth = 0;
+
+    int currenthealth = 5;
 
 
 
@@ -46,7 +46,7 @@ public class animalController : MonoBehaviour
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        currenthealth = maxhealth;
+
 
     }
 
