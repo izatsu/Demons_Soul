@@ -75,7 +75,8 @@ public class GameManager : MonoBehaviour
     [Header("Guide")]
     [SerializeField] GameObject Canvasguide_Prefab;
 
-
+    [Header("TimeLineBoss2")]
+    [SerializeField] GameObject CanvasTimeLineBoss2_Prefab;
 
 
     string nameScene;
@@ -231,7 +232,6 @@ public class GameManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "MainMenu")
         {
-            //sound_WorldMap.Stop();
             _audio.PlayMusic("MainTheme");
             player.transform.position = new Vector2(-4.52f, -8.89f);
             player.layer = LayerMask.NameToLayer("Layer 1");
@@ -250,6 +250,15 @@ public class GameManager : MonoBehaviour
             Setting.SetActive(true);
         }
 
+
+        /*if (SceneManager.GetActiveScene().name == "TestTimeLine")
+        {
+            OffUIGame();
+            _audio.PlayMusic("WorldMapTheme");
+            Setting.SetActive(false);
+
+            Invoke("LoadSceneWorldMap", 7f);
+        }*/
 
     }
 
@@ -309,6 +318,14 @@ public class GameManager : MonoBehaviour
                 Destroy(healthbarBoss2);
                 winboss2 = true;
                 hasBoss2 = false;
+
+                _audio.PlayMusic("WorldMapTheme");
+                GameObject Timeline = Instantiate(CanvasTimeLineBoss2_Prefab);
+                Destroy(Timeline, 23f);
+
+               /* SceneManager.LoadScene("TestTimeLine");*/
+
+
                 Tele = Instantiate(Tele_Prefab, pos_boss2, Quaternion.Euler(0, 0, 0));
                 Tele.GetComponent<Cainos.PixelArtTopDown_Basic.PropsAltar>().number = 4;
                 Tele.GetComponent<Cainos.PixelArtTopDown_Basic.PropsAltar>().loadScene = 1;
@@ -339,6 +356,11 @@ public class GameManager : MonoBehaviour
         joystickbutton.SetActive(false);
     }    
 
+    private void LoadSceneWorldMap()
+    {
+        SceneManager.LoadScene("WorldMap");
+    }
+
 
     public void PauseGame()
     {
@@ -365,4 +387,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;       
         SceneManager.LoadScene("MainMenu");
     }    
+
+   
 }
