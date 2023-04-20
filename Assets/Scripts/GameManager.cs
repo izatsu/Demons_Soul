@@ -97,6 +97,8 @@ public class GameManager : MonoBehaviour
     //fps
     public int frameRate = 60;
 
+    GameObject map;
+
 
     private void Awake()
     {
@@ -120,6 +122,7 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
         nameScene = SceneManager.GetActiveScene().name;
         posPl = Vector3.zero;
+        map = GameObject.Find("Map");
 
 
 
@@ -253,15 +256,13 @@ public class GameManager : MonoBehaviour
             Setting.SetActive(true);
         }
 
-
-        /*if (SceneManager.GetActiveScene().name == "TestTimeLine")
+        if(SceneManager.GetActiveScene().name == "WorldMap" ||
+           SceneManager.GetActiveScene().name == "RoomBoss1" ||
+           SceneManager.GetActiveScene().name == "RoomBoss2")
         {
-            OffUIGame();
-            _audio.PlayMusic("WorldMapTheme");
-            Setting.SetActive(false);
-
-            Invoke("LoadSceneWorldMap", 7f);
-        }*/
+            map = GameObject.Find("Map");
+        }    
+        
 
     }
 
@@ -290,6 +291,7 @@ public class GameManager : MonoBehaviour
                 Destroy(healthbarBoss);
                 winboss1 = true;
                 hasBoss1 = false;
+                _audio.PlayMusic("WorldMapTheme");
                 GameObject Timeline = Instantiate(CanvasTimeLineBossSlime_Prefab);
                 Destroy(Timeline, 63f);
 
@@ -373,6 +375,7 @@ public class GameManager : MonoBehaviour
 
         _audio.PlaySFX("ButtonOption");
         Time.timeScale = 0;
+        map.SetActive(false);
         OffUIGame();
         MenuSetting.SetActive(true);
     }    
@@ -381,6 +384,7 @@ public class GameManager : MonoBehaviour
     {
 
         _audio.PlaySFX("ButtonBack");
+        map.SetActive(true);
         Time.timeScale = 1;
         OnUIGame();
         MenuSetting.SetActive(false);

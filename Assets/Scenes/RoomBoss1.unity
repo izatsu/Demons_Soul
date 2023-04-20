@@ -30899,8 +30899,13 @@ MonoBehaviour:
   "D\xF6kk\xE1lfar_prefabs": {fileID: 0}
   CanvasHealthBarBoss2_Prefabs: {fileID: 0}
   SummonBoss2_prefabs: {fileID: 0}
+  Door2_prefab: {fileID: 0}
   Canvassetting_Prefab: {fileID: 0}
   CavasMenusetting_Prefab: {fileID: 0}
+  Canvasguide_Prefab: {fileID: 0}
+  CanvasTimeLineBossSlime_Prefab: {fileID: 0}
+  CanvasTimeLineBoss2_Prefab: {fileID: 0}
+  frameRate: 60
 --- !u!4 &1884149360
 Transform:
   m_ObjectHideFlags: 0
@@ -30926,7 +30931,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2053486305}
   m_Layer: 0
-  m_Name: Layer 1
+  m_Name: Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

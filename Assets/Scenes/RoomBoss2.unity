@@ -44872,7 +44872,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1594084131}
   m_Layer: 20
-  m_Name: RoomBoss2
+  m_Name: Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
