@@ -75,6 +75,9 @@ public class GameManager : MonoBehaviour
     [Header("Guide")]
     [SerializeField] GameObject Canvasguide_Prefab;
 
+    [Header("TimeLineBossSlime")]
+    [SerializeField] GameObject CanvasTimeLineBossSlime_Prefab;
+
     [Header("TimeLineBoss2")]
     [SerializeField] GameObject CanvasTimeLineBoss2_Prefab;
 
@@ -287,6 +290,9 @@ public class GameManager : MonoBehaviour
                 Destroy(healthbarBoss);
                 winboss1 = true;
                 hasBoss1 = false;
+                GameObject Timeline = Instantiate(CanvasTimeLineBossSlime_Prefab);
+                Destroy(Timeline, 63f);
+
                 Tele = Instantiate(Tele_Prefab, pos_boss, Quaternion.Euler(0, 0, 0));
                 Tele.GetComponent<Cainos.PixelArtTopDown_Basic.PropsAltar>().number = 3;
                 Tele.GetComponent<Cainos.PixelArtTopDown_Basic.PropsAltar>().loadScene = 1;
