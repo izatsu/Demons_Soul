@@ -293,7 +293,7 @@ public class GameManager : MonoBehaviour
                 hasBoss1 = false;
                 _audio.PlayMusic("WorldMapTheme");
                 GameObject Timeline = Instantiate(CanvasTimeLineBossSlime_Prefab);
-                Destroy(Timeline, 63f);
+                Destroy(Timeline, 86f);
 
                 Tele = Instantiate(Tele_Prefab, pos_boss, Quaternion.Euler(0, 0, 0));
                 Tele.GetComponent<Cainos.PixelArtTopDown_Basic.PropsAltar>().number = 3;
@@ -329,7 +329,7 @@ public class GameManager : MonoBehaviour
 
                 _audio.PlayMusic("WorldMapTheme");
                 GameObject Timeline = Instantiate(CanvasTimeLineBoss2_Prefab);
-                Destroy(Timeline, 23f);
+                Destroy(Timeline, 37f);
 
                /* SceneManager.LoadScene("TestTimeLine");*/
 

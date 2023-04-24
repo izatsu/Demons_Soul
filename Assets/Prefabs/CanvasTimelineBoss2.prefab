@@ -127,8 +127,6 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: 5872182177950752492, guid: 86ced3a26b283f54289a8a30674b7e5e, type: 2}
     value: {fileID: 423546942006644094}
-  - key: {fileID: 8387654010078946610, guid: 86ced3a26b283f54289a8a30674b7e5e, type: 2}
-    value: {fileID: 423546942935833522}
   - key: {fileID: -862223615725786465, guid: 86ced3a26b283f54289a8a30674b7e5e, type: 2}
     value: {fileID: 423546942658250542}
   - key: {fileID: 5231975625125096716, guid: 86ced3a26b283f54289a8a30674b7e5e, type: 2}
