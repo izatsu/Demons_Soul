@@ -291,7 +291,7 @@ public class GameManager : MonoBehaviour
                 Destroy(healthbarBoss);
                 winboss1 = true;
                 hasBoss1 = false;
-                _audio.PlayMusic("WorldMapTheme");
+                _audio.PlayMusic("TimeLineBossSlime");
                 GameObject Timeline = Instantiate(CanvasTimeLineBossSlime_Prefab);
                 Destroy(Timeline, 86f);
 
@@ -327,7 +327,7 @@ public class GameManager : MonoBehaviour
                 winboss2 = true;
                 hasBoss2 = false;
 
-                _audio.PlayMusic("WorldMapTheme");
+                _audio.PlayMusic("TimeLineBoss2");
                 GameObject Timeline = Instantiate(CanvasTimeLineBoss2_Prefab);
                 Destroy(Timeline, 37f);
 

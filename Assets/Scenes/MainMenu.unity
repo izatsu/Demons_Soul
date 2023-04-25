@@ -1381,6 +1381,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: a303ad6024971da49a03be087c312465, type: 3}
   - name: ThemeRoomBoss2
     clip: {fileID: 8300000, guid: 65dc5f9591f106a47aa2fc9fd2127bb9, type: 3}
+  - name: TimeLineBossSlime
+    clip: {fileID: 8300000, guid: 5b38606c76adb4442aa4fbe129d23316, type: 3}
+  - name: TimeLineBoss2
+    clip: {fileID: 8300000, guid: 991ef60ffead9d142abdb3cc318a0c9e, type: 3}
   sfxSounds:
   - name: ButtonAttack
     clip: {fileID: 8300000, guid: 60e40472410dd4146a167996482310eb, type: 3}

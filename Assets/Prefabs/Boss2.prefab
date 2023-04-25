@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615d9b12d746e434cb6591ba3a1303cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "D\xF6kk\xE1lfar_health": 1
+  "D\xF6kk\xE1lfar_health": 100
   "countD\xF6kk\xE1lfar_health": 0
   checkDie: 0
 --- !u!114 &473048875146150379
